@@ -1,0 +1,84 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css" />
+
+<body>
+  <%- include('../includes/nav.ejs') %>
+  <main>
+    <% if(cart.length){ %>
+    <div class="grid">
+      <% for(let product of cart) {%>
+      <article class="card product-item">
+        <header class="card__header">
+          <h1 class="product__title"><%= product.productId.title %></h1>
+        </header>
+        <div class="card__image">
+          <img src="<%= product.productId.imageUrl%>" alt="A Book" />
+        </div>
+
+        <div class="card__content">
+          <h2 class="product__price">
+            <%= product.productId.price%><span style="color: red">₹</span>
+          </h2>
+          <p class="product__description"><%=product.productId.description%></p>
+        </div>
+        <div
+          class="card__content"
+          style="display: flex; align-items: center; justify-content: center;padding: 0px;"
+        >
+          <form
+            action="/removeProductFromCart"
+            method="post"
+            style="display: flex"
+          >
+            <button
+              type="submit"
+              class="sign_btn"
+              style="background-color: red"
+            >-</button>
+            <input type="hidden" name="productId" value="<%= product.productId._id%>" />
+          </form>
+          <h1 class="card__header">Quantity:<%=product.quantity%></h1>
+          <form action="/cart" method="post" style="display: flex">
+            <button
+              type="submit"
+              class="sign_btn"
+              style="background-color: green"
+            >+</button>
+            <input type="hidden" name="productId" value="<%= product.productId._id%>" />
+          </form>
+        </div>
+        <div style="display: flex;align-items: center;justify-content: center;">
+        <div class="card__actions">
+          <a href="/products/<%= product.productId._id%>" class="btn">Details</a>
+        </div>
+        <form action="/deleteItemInCart" method="POST">
+          <input type="hidden" name="productId" value="<%= product.productId._id%>" />
+          <input type="hidden" name="productPrice" value="<%= product.productId.price%>" />
+          
+          <button type="submit" style="margin: 1rem auto" class="btn">Delete</button>
+        </form>
+      </div>
+      </article>
+
+      <% } %>
+    </div>
+    <div class="cart__actions" style="border: 3px solid white;border-radius: 20px;margin-top: 1rem;">
+      <div class="card__content" style="margin: auto">
+        <h2 class="product__price">
+          <span style="color: blue">Total Price:</sapn>
+          <span><%= totalPrice%></span>
+          <span style="color: red"> ₹</span>
+        </h2>
+      </div>
+      <form action="/orders" method="post">
+        <button type="submit" style="margin: 1rem auto" class="btn">Order Now</button>
+      </form>
+    </div>
+
+    <% } else{ %>
+    <h1 style="text-align: center">No Products Added</h1>
+    <% } %>
+  </main>
+
+  <%- include('../includes/end.ejs') %>
+</body>

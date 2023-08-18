@@ -1,0 +1,25 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/forms.css">
+<link rel="stylesheet" href="/css/auth.css">
+
+<body>
+<%- include('../includes/nav.ejs') %>
+
+    <main style="width: 30rem;margin: 2rem auto">
+      <form class="login-form" action="/login" method="POST" >
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email"/>
+        </div>
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" />
+        </div>
+        
+        <div style="display: flex; justify-content: flex-end; width: 100%;">
+            <button class="btn" type="submit" >Login</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

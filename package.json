@@ -1,0 +1,29 @@
+{
+  "name": "online-shopping-app",
+  "version": "1.0.0",
+  "description": "Complete Node.js Guide",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "start-server": "node app.js"
+  },
+  "author": "Kattula Pavan Kumar",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect-mongodb-session": "^3.1.1",
+    "ejs": "^3.1.9",
+    "express": "^4.16.3",
+    "express-handlebars": "^7.0.7",
+    "express-session": "^1.17.3",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.3.0",
+    "mysql2": "^3.3.3",
+    "pug": "^3.0.2",
+    "sequelize": "^6.32.0"
+  }
+}

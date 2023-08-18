@@ -1,0 +1,83 @@
+<header class="main-header">
+  <nav class="main-header__nav">
+    <ul class="main-header__item-list">
+      <li class="main-header__item">
+        <a
+          href="/"
+          class="<%=path!==undefined && (path === '/' ?'active' :'')%>"
+          >Shop</a
+        >
+      </li>
+      <li class="main-header__item">
+        <a
+          href="/products"
+          class="<%=path!==undefined && (path === '/products' ?'active' :'')%>"
+          >Products</a
+        >
+      </li>
+      <% if(isAuthenticated) {%>
+      <li class="main-header__item">
+        <a
+          href="/cart"
+          class="<%=path!==undefined && (path === '/cart' ?'active' :'')%>"
+          >Cart</a
+        >
+        <!-- <div class="hide">
+          <span
+            style="
+              padding: 10px;
+              background-color: aqua;
+              z-index: 10;
+              position: relative;
+              top: 10px;
+            "
+            ><%= docTitle %></span
+          >
+        </div> -->
+      </li>
+      <li class="main-header__item">
+        <a
+          href="/orders"
+          class="<%=path!==undefined && (path === '/orders' ?'active' :'')%>"
+          >Orders</a
+        >
+      </li>
+      <li class="main-header__item">
+        <a
+          href="/admin/add-product"
+          class="<%=path!==undefined && (path === '/admin/add-products' ?'active' :'')%>"
+          >Add Product</a
+        >
+      </li>
+      <li class="main-header__item">
+        <a
+          href="/admin/products"
+          class="<%=path!==undefined && (path === '/admin/products' ?'active' :'')%>"
+          >Admin Products</a
+        >
+      </li>
+      <% } %>
+    </ul>
+    <ul class="main-header__item-list">
+      <% if(!isAuthenticated) {%>
+      <li class="main-header__item">
+        <a
+          href="/login"
+          class="<%=path!==undefined && (path === '/login' ?'active' :'')%>"
+          >Login</a
+        >
+      </li>
+      <% } else{%>
+      <li class="main-header__item">
+        <form action="/logout" method="post">
+          <button
+            class="<%=path!==undefined && (path === '/logout' ?'active' :'')%>"
+          >
+            Logout
+          </button>
+        </form>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+</header>
