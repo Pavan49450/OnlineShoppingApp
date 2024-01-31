@@ -3,7 +3,6 @@ const User = require("../models/user");
 exports.getLogin = (req, res, next) => {
   // const isLoggedIn = req.get("Cookie").split(";")[1].trim().split("=")[1];
   const isLoggedIn = req.session.isLoggedIn;
-  console.log(isLoggedIn);
   res.render("auth/login", {
     docTitle: "Login Page",
     path: "/login",
@@ -16,6 +15,8 @@ exports.postLogin = (req, res, next) => {
     .then((user) => {
       req.session.isLoggedIn = true;
       req.session.user = user;
+      console.log("isloggin", req.session.isLoggedIn);
+
       req.session.save((err) => {
         res.redirect("/");
       });
@@ -27,6 +28,7 @@ exports.postLogin = (req, res, next) => {
 exports.postLogout = (req, res, next) => {
   req.session.destroy((err) => {
     console.log(err);
+    console.log("Logout", req.session);
     res.redirect("/");
   });
 };

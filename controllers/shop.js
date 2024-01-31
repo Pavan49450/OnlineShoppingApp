@@ -7,8 +7,8 @@ const Order = require("../models/order");
 module.exports.getProducts = (req, res, next) => {
   // const isLoggedIn = req.get("Cookie").split(";")[1].trim().split("=")[1];
   const isLoggedIn = req.session.isLoggedIn;
-  console.log("->", isLoggedIn);
-  console.log("user", req.user);
+  // console.log("->", isLoggedIn);
+  // console.log("user", req.user);
   Product.find()
     .then((products) => {
       res.render("shop/product-list", {

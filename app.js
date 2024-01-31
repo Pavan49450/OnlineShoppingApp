@@ -14,6 +14,7 @@ const MongoDbStore = require("connect-mongodb-session")(session);
 
 const app = express();
 const mongodbURI =
+  // "mongodb://kattulaPavan:skyisblue@localhost:27017/?authMechanism=DEFAULT";
   "mongodb+srv://pavan49450:1234567890@cluster0.pmgc3gi.mongodb.net/shop?retryWrites=true&w=majority";
 
 const store = MongoDbStore({
@@ -38,6 +39,7 @@ app.use((req, res, next) => {
   if (!req.session.user) {
     return next();
   }
+  // console.log(req.session.user._id);
   User.findById(req.session.user._id)
     .then((user) => {
       req.user = user;
@@ -59,9 +61,13 @@ app.use(errorController.get404Page);
 // });
 
 mongoose
-  .connect(mongodbURI)
+  .connect(mongodbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((result) => {
     User.findOne().then((user) => {
+      // console.log("user->", user);
       if (!user) {
         const newUser = new User({
           name: "Pavan",

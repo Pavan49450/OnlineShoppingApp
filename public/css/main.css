@@ -11,9 +11,7 @@ body {
 }
 
 main {
-  padding: 1rem;
-  margin: 2rem 5rem;
-  background-color: #f7e2b6;
+  margin: 1rem;
 }
 
 .main-header {
@@ -90,7 +88,7 @@ button {
 }
 
 .card {
-  box-shadow: 0 2px 10px rgb(7 7 7 / 26%);
+  box-shadow: 0 2px 10px rgb(75 74 74 / 26%);
   background-color: #eeeed8;
   border-radius: 5px;
 }
