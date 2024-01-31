@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/e3a83684-dd9b-417e-a5b6-e29dda2dbb20/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/online-shopping-app",
+  "appService.deploySubpath": "."
+}
